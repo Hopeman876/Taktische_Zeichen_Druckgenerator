@@ -1,0 +1,986 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SettingsDialog</class>
+ <widget class="QDialog" name="SettingsDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Programmeinstellungen</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab_standard">
+      <attribute name="title">
+       <string>Standard-Werte</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QScrollArea" name="scrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>556</width>
+            <height>600</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <widget class="QGroupBox" name="groupBox_zeichen">
+             <property name="title">
+              <string>Zeichengröße</string>
+             </property>
+             <layout class="QFormLayout" name="formLayout">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_hoehe">
+                <property name="text">
+                 <string>Höhe:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <layout class="QHBoxLayout" name="horizontalLayout">
+                <item>
+                 <widget class="QDoubleSpinBox" name="spin_hoehe">
+                  <property name="suffix">
+                   <string> mm</string>
+                  </property>
+                  <property name="decimals">
+                   <number>1</number>
+                  </property>
+                  <property name="minimum">
+                   <double>10.000000000000000</double>
+                  </property>
+                  <property name="maximum">
+                   <double>200.000000000000000</double>
+                  </property>
+                  <property name="value">
+                   <double>45.000000000000000</double>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_breite">
+                <property name="text">
+                 <string>Breite:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <layout class="QHBoxLayout" name="horizontalLayout_2">
+                <item>
+                 <widget class="QDoubleSpinBox" name="spin_breite">
+                  <property name="suffix">
+                   <string> mm</string>
+                  </property>
+                  <property name="decimals">
+                   <number>1</number>
+                  </property>
+                  <property name="minimum">
+                   <double>10.000000000000000</double>
+                  </property>
+                  <property name="maximum">
+                   <double>200.000000000000000</double>
+                  </property>
+                  <property name="value">
+                   <double>45.000000000000000</double>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="2" column="0" colspan="2">
+               <widget class="QCheckBox" name="check_s1_aspect_locked">
+                <property name="text">
+                 <string>S1-Seitenverhältnis 2:1 fixieren (Breite = 2 x Höhe)</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0" colspan="2">
+               <widget class="QCheckBox" name="check_s2_aspect_locked">
+                <property name="text">
+                 <string>S2-Seitenverhältnis 1:1 fixieren (Breite = Höhe)</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_abstaende">
+             <property name="title">
+              <string>Abstände</string>
+             </property>
+             <layout class="QFormLayout" name="formLayout_2">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_beschnitt">
+                <property name="text">
+                 <string>Beschnittzugabe:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QDoubleSpinBox" name="spin_beschnitt">
+                <property name="suffix">
+                 <string> mm</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <double>20.000000000000000</double>
+                </property>
+                <property name="value">
+                 <double>3.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_sicherheit">
+                <property name="text">
+                 <string>Sicherheitsabstand:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QDoubleSpinBox" name="spin_sicherheit">
+                <property name="suffix">
+                 <string> mm</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <double>20.000000000000000</double>
+                </property>
+                <property name="value">
+                 <double>3.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_grafik_text">
+                <property name="text">
+                 <string>Grafik ↔ Text:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QDoubleSpinBox" name="spin_grafik_text">
+                <property name="suffix">
+                 <string> mm</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <double>20.000000000000000</double>
+                </property>
+                <property name="value">
+                 <double>3.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="label_text_bottom">
+                <property name="text">
+                 <string>Text ↔ Unterrand:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QDoubleSpinBox" name="spin_text_bottom">
+                <property name="suffix">
+                 <string> mm</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <double>20.000000000000000</double>
+                </property>
+                <property name="value">
+                 <double>1.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_schrift">
+             <property name="title">
+              <string>Schrift</string>
+             </property>
+             <layout class="QFormLayout" name="formLayout_3">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_font">
+                <property name="text">
+                 <string>Schriftart:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="combo_font">
+                <item>
+                 <property name="text">
+                  <string>Arial</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_fontsize">
+                <property name="text">
+                 <string>Größe:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QSpinBox" name="spin_fontsize">
+                <property name="suffix">
+                 <string> pt</string>
+                </property>
+                <property name="minimum">
+                 <number>6</number>
+                </property>
+                <property name="maximum">
+                 <number>200</number>
+                </property>
+                <property name="value">
+                 <number>10</number>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_auto_font">
+                <property name="text">
+                 <string>Automatisch anpassen:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QCheckBox" name="check_auto_font_size">
+                <property name="text">
+                 <string>Schriftgröße bei Zeichengröße-Änderung anpassen</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+                <property name="toolTip">
+                 <string>Wenn aktiviert, wird die Schriftgröße automatisch angepasst wenn die Zeichengröße geändert wird</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_modus">
+             <property name="title">
+              <string>Standard-Modus</string>
+             </property>
+             <layout class="QFormLayout" name="formLayout_4">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_modus">
+                <property name="text">
+                 <string>Modus:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="combo_modus">
+                <item>
+                 <property name="text">
+                  <string>OV + Stärke</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ort + Stärke</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rufname</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Freitext</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ohne Text</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Dateiname</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_grafik">
+             <property name="title">
+              <string>Grafik</string>
+             </property>
+             <layout class="QFormLayout" name="formLayout_5">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_position">
+                <property name="text">
+                 <string>Position:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="combo_position">
+                <item>
+                 <property name="text">
+                  <string>Oben</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Mittig</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Unten</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_max_hoehe">
+                <property name="text">
+                 <string>Max. Höhe:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QDoubleSpinBox" name="spin_max_hoehe">
+                <property name="suffix">
+                 <string> mm</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="minimum">
+                 <double>10.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
+                </property>
+                <property name="value">
+                 <double>39.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_max_breite">
+                <property name="text">
+                 <string>Max. Breite:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QDoubleSpinBox" name="spin_max_breite">
+                <property name="suffix">
+                 <string> mm</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="minimum">
+                 <double>10.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>100.000000000000000</double>
+                </property>
+                <property name="value">
+                 <double>39.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="label_auto_grafik">
+                <property name="text">
+                 <string>Automatisch anpassen:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QCheckBox" name="check_auto_grafik_size">
+                <property name="text">
+                 <string>Grafikgröße bei Zeichengröße-Änderung anpassen</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+                <property name="toolTip">
+                 <string>Wenn aktiviert, wird die Grafikgröße automatisch auf Maximum gesetzt wenn die Zeichengröße geändert wird</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_export">
+             <property name="title">
+              <string>Export-Einstellungen</string>
+             </property>
+             <layout class="QFormLayout" name="formLayout_6">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_minimum_dpi">
+                <property name="text">
+                 <string>Mindest-DPI für Druck:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QSpinBox" name="spin_minimum_dpi">
+                <property name="suffix">
+                 <string> DPI</string>
+                </property>
+                <property name="minimum">
+                 <number>100</number>
+                </property>
+                <property name="maximum">
+                 <number>600</number>
+                </property>
+                <property name="singleStep">
+                 <number>50</number>
+                </property>
+                <property name="value">
+                 <number>300</number>
+                </property>
+                <property name="toolTip">
+                 <string>Minimum DPI für Druckqualität. Bei niedrigeren Werten erscheint eine Warnung beim Export.</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_export_dpi">
+                <property name="text">
+                 <string>Standard-DPI für Export:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QSpinBox" name="spin_export_dpi">
+                <property name="suffix">
+                 <string> DPI</string>
+                </property>
+                <property name="minimum">
+                 <number>100</number>
+                </property>
+                <property name="maximum">
+                 <number>600</number>
+                </property>
+                <property name="singleStep">
+                 <number>50</number>
+                </property>
+                <property name="value">
+                 <number>450</number>
+                </property>
+                <property name="toolTip">
+                 <string>Diese DPI wird beim Öffnen des Export-Dialogs vorausgewählt.</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_programmverhalten">
+             <property name="title">
+              <string>Programmverhalten</string>
+             </property>
+             <layout class="QFormLayout" name="formLayout_programmverhalten">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_standard_layout">
+                <property name="text">
+                 <string>Standard-Layout beim Start:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="combo_standard_layout">
+                <item>
+                 <property name="text">
+                  <string>S2-Layout (Standard)</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>S1-Layout (Doppelschild)</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_standard_export">
+                <property name="text">
+                 <string>Standard-Exportformat:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QComboBox" name="combo_standard_export">
+                <item>
+                 <property name="text">
+                  <string>PNG</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>PDF (Einzelseite)</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>PDF (Schnittbogen)</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_pdf_margins">
+                <property name="text">
+                 <string>PDF-Schnittbogen Seitenränder:</string>
+                </property>
+                <property name="styleSheet">
+                 <string>font-weight: bold; margin-top: 8px;</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="label_pdf_margin_h">
+                <property name="text">
+                 <string>  Links/Rechts:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QDoubleSpinBox" name="spin_pdf_margin_h">
+                <property name="suffix">
+                 <string> mm</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>50.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.500000000000000</double>
+                </property>
+                <property name="value">
+                 <double>10.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="label_pdf_margin_v">
+                <property name="text">
+                 <string>  Oben/Unten:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QDoubleSpinBox" name="spin_pdf_margin_v">
+                <property name="suffix">
+                 <string> mm</string>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="minimum">
+                 <double>0.000000000000000</double>
+                </property>
+                <property name="maximum">
+                 <double>50.000000000000000</double>
+                </property>
+                <property name="singleStep">
+                 <double>0.500000000000000</double>
+                </property>
+                <property name="value">
+                 <double>10.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0" colspan="2">
+               <widget class="QLabel" name="label_pdf_margins_info">
+                <property name="text">
+                 <string>Hinweis: Kleinere Ränder = mehr Zeichen pro Seite</string>
+                </property>
+                <property name="styleSheet">
+                 <string>color: #666; font-size: 9pt;</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_info">
+         <property name="text">
+          <string>ℹ Diese Werte werden beim Start und für neue Zeichen verwendet.
+Änderungen im Hauptfenster überschreiben sie temporär während der Programmlaufzeit.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="styleSheet">
+          <string>background-color: #f0f0f0; padding: 8px; border-radius: 4px;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_restore_defaults">
+         <property name="text">
+          <string>Standard wiederherstellen</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_logging">
+      <attribute name="title">
+       <string>Logging</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QGroupBox" name="groupBox_loglevel">
+         <property name="title">
+          <string>Log-Level</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item>
+           <widget class="QRadioButton" name="radio_debug">
+            <property name="text">
+             <string>DEBUG - Alle Details (sehr ausführlich)</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radio_info">
+            <property name="text">
+             <string>INFO - Normale Programmausführung</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radio_warning">
+            <property name="text">
+             <string>WARNING - Nur Warnungen und Fehler</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radio_error">
+            <property name="text">
+             <string>ERROR - Nur Fehler</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_logfiles">
+         <property name="title">
+          <string>Log-Dateien</string>
+         </property>
+         <layout class="QFormLayout" name="formLayout_6">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_max_logs">
+            <property name="text">
+             <string>Maximale Anzahl:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QSpinBox" name="spin_max_logs">
+            <property name="suffix">
+             <string> Dateien</string>
+            </property>
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>100</number>
+            </property>
+            <property name="value">
+             <number>10</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_log_info">
+            <property name="text">
+             <string>└─ Ältere werden automatisch gelöscht</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_log_info2">
+         <property name="title">
+          <string>Information</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item>
+           <widget class="QLabel" name="label_log_dir">
+            <property name="text">
+             <string>Log-Ordner: logs/</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_log_size">
+            <property name="text">
+             <string>Aktueller Speicherplatz: ~0 MB</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QPushButton" name="btn_open_logs">
+              <property name="text">
+               <string>Logs öffnen</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_delete_logs">
+              <property name="text">
+               <string>Logs löschen</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_logging_info">
+         <property name="text">
+          <string>ℹ Änderungen werden nach Programmneustart aktiv</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="styleSheet">
+          <string>background-color: #f0f0f0; padding: 8px; border-radius: 4px;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_advanced">
+      <attribute name="title">
+       <string>Erweitert</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_7">
+       <item>
+        <widget class="QGroupBox" name="groupBox_paths">
+         <property name="title">
+          <string>Pfade</string>
+         </property>
+         <layout class="QFormLayout" name="formLayout_7">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_zeichen_ordner">
+            <property name="text">
+             <string>Zeichen-Ordner:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QLineEdit" name="edit_zeichen_ordner"/>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_browse_ordner">
+              <property name="text">
+               <string>Durchsuchen</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_performance">
+         <property name="title">
+          <string>Performance</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_8">
+          <item>
+           <widget class="QCheckBox" name="chk_template_opt">
+            <property name="text">
+             <string>Template-Optimierung nutzen</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="chk_chunk_processing">
+            <property name="text">
+             <string>Stapelbasierte Verarbeitung</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_imagemagick">
+         <property name="title">
+          <string>ImageMagick</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_9">
+          <item>
+           <widget class="QLabel" name="label_im_status">
+            <property name="text">
+             <string>Status: Wird geprüft...</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_im_path">
+            <property name="text">
+             <string>Pfad: -</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_advanced_warning">
+         <property name="text">
+          <string>⚠ Änderungen hier können die Programmfunktion beeinträchtigen.
+Nur ändern wenn nötig!</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="styleSheet">
+          <string>background-color: #fff3cd; padding: 8px; border-radius: 4px; color: #856404;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

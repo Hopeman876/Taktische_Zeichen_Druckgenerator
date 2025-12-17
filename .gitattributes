@@ -1,0 +1,11 @@
+# Qt Designer UI files should always use LF line endings
+*.ui text eol=lf
+
+# Python files should use LF line endings
+*.py text eol=lf
+
+# Markdown files
+*.md text eol=lf
+
+# Windows batch files should use CRLF
+*.bat text eol=crlf

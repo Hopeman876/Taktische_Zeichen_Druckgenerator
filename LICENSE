@@ -1,0 +1,75 @@
+GNU GENERAL PUBLIC LICENSE
+Version 3, 29 June 2007
+
+Copyright (C) 2025 Ramon Hoffmann
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+================================================================================
+
+ZWECK UND VERWENDUNG
+
+Der Taktische Zeichen Druckgenerator wurde speziell fuer die ehrenamtliche
+und hauptamtliche Arbeit im Zivil- und Katastrophenschutz entwickelt.
+
+Das Programm soll Feuerwehren, Rettungsdiensten, dem THW und anderen
+Hilfsorganisationen eine kostenlose und quelloffene Loesung bieten,
+um die Erstellung taktischer Zeichen zu erleichtern.
+
+Aus diesem Grund steht dieses Projekt unter der GPL v3 und ist fuer
+alle Zwecke kostenlos nutzbar - sowohl fuer ehrenamtliche als auch
+fuer kommerzielle Nutzung.
+
+================================================================================
+
+FREUNDLICHE BITTE AN KOMMERZIELLE NUTZER
+
+Obwohl die GPL v3 Lizenz keine Einschraenkungen fuer kommerzielle Nutzung
+vorsieht und auch keine Benachrichtigungspflicht besteht, bitten wir
+kommerzielle Nutzer hoeflich um eine kurze Mitteilung.
+
+Falls Sie dieses Tool in einem kommerziellen Kontext einsetzen und damit
+Einnahmen erzielen, wuerden wir uns freuen, davon zu erfahren:
+
+- WARUM: Um die Verbreitung und den Nutzen des Programms nachvollziehen zu koennen
+- ZWECK: Besserer Support und gezielte Weiterentwicklung
+- KOSTEN: Keine - wir moechten nur wissen, wer von unserer Arbeit profitiert
+
+Kontakt: Ramon-Hoffmann@gmx.de
+
+Diese Bitte ist KEINE rechtliche Verpflichtung, sondern lediglich eine
+freundliche Anfrage an kommerzielle Nutzer. Das Programm bleibt fuer alle
+vollstaendig kostenlos und ohne Einschraenkungen nutzbar.
+
+================================================================================
+
+DRITTANBIETER-KOMPONENTEN
+
+Dieses Projekt verwendet Open-Source-Komponenten von Drittanbietern.
+Eine vollstaendige Liste mit Lizenzinformationen finden Sie in:
+
+- THIRD-PARTY-LICENSES.md
+
+Hauptkomponenten:
+- PyQt6 (GPL v3) - GUI Framework
+- Pillow (HPND License) - Bildverarbeitung
+- Wand (MIT License) - ImageMagick Python-Wrapper
+- ReportLab (BSD-like) - PDF-Generierung
+- openpyxl (MIT License) - Excel-Import
+- ImageMagick (Apache 2.0) - SVG-Rendering (gebundelt)
+
+================================================================================
+
+Vollstaendiger GPL v3 Lizenztext:
+https://www.gnu.org/licenses/gpl-3.0.html

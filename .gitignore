@@ -1,0 +1,110 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+Logs/
+*.log
+
+# Exports (umbenannt in Phase 2)
+exports/
+Taktische_Zeichen_Ausgabe/
+*.png
+*.jpg
+*.pdf
+
+# Ausnahme: Resources-Verzeichnis (Logo und Icons)
+!resources/*.png
+!resources/*.ico
+
+# User-documentation
+!user-documentation/Benutzerhandbuch.pdf
+
+# SVG-Vorlagen (umbenannt in Phase 2, zu groß für Git)
+Taktische_Zeichen/
+Taktische_Zeichen_Grafikvorlagen/
+Taktische_Zeichen_Grafikvorlagen_Gesamt/
+
+# Releases
+Releases/
+
+# Backups
+Backup/
+*_backup/
+*.bak
+settings.json.backup
+
+# ImageMagick (zu groß für Git)
+# imagemagick/
+
+# Temporäre Dateien
+temp/
+tmp/
+*.tmp
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# PyInstaller
+build/
+dist/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# Environment variables
+.env
+.env.local
+
+# User settings
+settings.json
+.claude/settings.local.json
+
+# User spezifische Dateien
+ai-docs/_Sammlung_offene_Punkte.md
+
+# Cache files
+.svg_cache.jsongui/ui_files/*.backup*

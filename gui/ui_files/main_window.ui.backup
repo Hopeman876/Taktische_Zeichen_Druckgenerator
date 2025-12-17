@@ -1,0 +1,763 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1400</width>
+    <height>900</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Taktische Zeichen Druckgenerator</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QGroupBox" name="groupBox_settings">
+      <property name="title">
+       <string>Globale Einstellungen</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_settings">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_settings_row1">
+         <item>
+          <widget class="QLabel" name="label_zeichen_groesse">
+           <property name="text">
+            <string>Größe der fertigen taktischen Zeichen:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_hoehe">
+           <property name="text">
+            <string>Höhe:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="spin_zeichen_hoehe">
+           <property name="suffix">
+            <string> mm</string>
+           </property>
+           <property name="decimals">
+            <number>0</number>
+           </property>
+           <property name="minimum">
+            <double>10.0</double>
+           </property>
+           <property name="maximum">
+            <double>500.0</double>
+           </property>
+           <property name="value">
+            <double>45.0</double>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_breite">
+           <property name="text">
+            <string>Breite:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="spin_zeichen_breite">
+           <property name="suffix">
+            <string> mm</string>
+           </property>
+           <property name="decimals">
+            <number>0</number>
+           </property>
+           <property name="minimum">
+            <double>10.0</double>
+           </property>
+           <property name="maximum">
+            <double>500.0</double>
+           </property>
+           <property name="value">
+            <double>45.0</double>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_druckgroesse">
+           <property name="text">
+            <string>(Druckgröße: 0.0 x 0.0 cm)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_1">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_settings_row2">
+         <item>
+          <widget class="QLabel" name="label_font_size">
+           <property name="text">
+            <string>Schriftgröße:</string>
+           </property>
+           <property name="toolTip">
+            <string>Schriftgröße für Text in Punkten (pt)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="spin_font_size">
+           <property name="suffix">
+            <string> pt</string>
+           </property>
+           <property name="minimum">
+            <number>6</number>
+           </property>
+           <property name="maximum">
+            <number>200</number>
+           </property>
+           <property name="value">
+            <number>10</number>
+           </property>
+           <property name="toolTip">
+            <string>Aktuelle Schriftgröße in Punkten (6-200pt für Zeichen von 30-900mm)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_apply_recommended_font_size">
+           <property name="text">
+            <string>←</string>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>30</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Übernimmt die empfohlene Schriftgröße</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_recommended_font_size">
+           <property name="text">
+            <string>Empfohlen: 10 pt</string>
+           </property>
+           <property name="toolTip">
+            <string>Empfohlene Schriftgröße basierend auf Zeichengröße (45mm → 10pt)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="check_auto_font_size">
+           <property name="text">
+            <string>Auto</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+           <property name="toolTip">
+            <string>Schriftgröße automatisch anpassen wenn Zeichengröße geändert wird</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2a">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_settings_row3">
+         <item>
+          <widget class="QLabel" name="label_beschnittzugabe">
+           <property name="text">
+            <string>Beschnittzugabe:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="spin_beschnittzugabe">
+           <property name="suffix">
+            <string> mm</string>
+           </property>
+           <property name="decimals">
+            <number>0</number>
+           </property>
+           <property name="minimum">
+            <double>0.0</double>
+           </property>
+           <property name="maximum">
+            <double>20.0</double>
+           </property>
+           <property name="value">
+            <double>3.0</double>
+           </property>
+           <property name="toolTip">
+            <string>Zusätzlicher Rand für Druck (wird abgeschnitten)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_sicherheitsabstand">
+           <property name="text">
+            <string>Sicherheitsabstand:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="spin_abstand_rand">
+           <property name="suffix">
+            <string> mm</string>
+           </property>
+           <property name="decimals">
+            <number>0</number>
+           </property>
+           <property name="minimum">
+            <double>0.0</double>
+           </property>
+           <property name="maximum">
+            <double>20.0</double>
+           </property>
+           <property name="value">
+            <double>3.0</double>
+           </property>
+           <property name="toolTip">
+            <string>Abstand Grafik/Text zum Rand des fertigen Zeichens</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_max_grafikgroesse">
+           <property name="text">
+            <string>(Max. Grafik: 39.0 x 39.0 mm)</string>
+           </property>
+           <property name="toolTip">
+            <string>Maximale Grafikgröße = Zeichengröße - (2 × Sicherheitsabstand)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_grafik_size">
+           <property name="text">
+            <string>Grafikgröße:</string>
+           </property>
+           <property name="toolTip">
+            <string>Höhe und Breite der Grafik in mm</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="spin_grafik_hoehe">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="suffix">
+            <string> mm</string>
+           </property>
+           <property name="decimals">
+            <number>0</number>
+           </property>
+           <property name="minimum">
+            <double>10.0</double>
+           </property>
+           <property name="maximum">
+            <double>500.0</double>
+           </property>
+           <property name="value">
+            <double>39.0</double>
+           </property>
+           <property name="toolTip">
+            <string>Grafik-Höhe in mm</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_grafik_x">
+           <property name="text">
+            <string>×</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="spin_grafik_breite">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="suffix">
+            <string> mm</string>
+           </property>
+           <property name="decimals">
+            <number>0</number>
+           </property>
+           <property name="minimum">
+            <double>10.0</double>
+           </property>
+           <property name="maximum">
+            <double>500.0</double>
+           </property>
+           <property name="value">
+            <double>39.0</double>
+           </property>
+           <property name="toolTip">
+            <string>Grafik-Breite in mm</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_apply_max_grafik_size">
+           <property name="text">
+            <string>Setze Grafik auf max. Abmessungen</string>
+           </property>
+           <property name="toolTip">
+            <string>Übernimmt die maximal möglichen Grafikabmessungen in die Einstellungen</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="check_auto_grafik_size">
+           <property name="text">
+            <string>Auto</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+           <property name="toolTip">
+            <string>Grafikgröße automatisch anpassen wenn Zeichengröße geändert wird</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_grafik_position_label">
+           <property name="text">
+            <string>Position:</string>
+           </property>
+           <property name="toolTip">
+            <string>Position der Grafik (nur für Modus 'Nur Grafik')</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combo_grafik_position">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Vertikale Position der Grafik (nur für Modus 'Nur Grafik')</string>
+           </property>
+           <item>
+            <property name="text">
+             <string>oben</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>mittig</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>unten</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2a">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_settings_row4">
+         <item>
+          <widget class="QLabel" name="label_text_bottom_offset">
+           <property name="text">
+            <string>Abstand Text-Unterkante:</string>
+           </property>
+           <property name="toolTip">
+            <string>Abstand zwischen Textunterkante und unterem Sicherheitsrand</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="spin_text_bottom_offset">
+           <property name="suffix">
+            <string> mm</string>
+           </property>
+           <property name="decimals">
+            <number>0</number>
+           </property>
+           <property name="minimum">
+            <double>0.0</double>
+           </property>
+           <property name="maximum">
+            <double>20.0</double>
+           </property>
+           <property name="value">
+            <double>0.0</double>
+           </property>
+           <property name="toolTip">
+            <string>Abstand zwischen Textunterkante und unterem Sicherheitsrand</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_abstand_grafik_text">
+           <property name="text">
+            <string>Abstand Grafik-Text:</string>
+           </property>
+           <property name="toolTip">
+            <string>Abstand zwischen Grafik (oben) und Text (unten)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="spin_abstand_grafik_text">
+           <property name="suffix">
+            <string> mm</string>
+           </property>
+           <property name="decimals">
+            <number>0</number>
+           </property>
+           <property name="minimum">
+            <double>0.0</double>
+           </property>
+           <property name="maximum">
+            <double>50.0</double>
+           </property>
+           <property name="value">
+            <double>3.0</double>
+           </property>
+           <property name="toolTip">
+            <string>Abstand zwischen Grafik (oben) und Text (unten)</string>
+           </property>
+          </widget>
+         </item>
+         <!-- v7.1: check_schnittlinien entfernt - Checkbox ist jetzt im Export-Dialog -->
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_settings_row5">
+         <item>
+          <spacer name="horizontalSpacer_3a">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_save_settings">
+           <property name="maximumSize">
+            <size>
+             <width>200</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Einstellungen speichern</string>
+           </property>
+           <property name="toolTip">
+            <string>Speichert aktuelle Einstellungen in settings.json</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_buttons">
+      <property name="leftMargin">
+       <number>10</number>
+      </property>
+      <property name="rightMargin">
+       <number>10</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="btn_ordner_oeffnen">
+        <property name="text">
+         <string>Vorlagen-Ordner auswählen</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_neu_laden">
+        <property name="text">
+         <string>Vorlagen neu laden</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="separator_1">
+        <property name="frameShape">
+         <enum>QFrame::VLine</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Sunken</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_vorlagen_ordner_explorer">
+        <property name="text">
+         <string>Vorlagen-Ordner in Explorer öffnen</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_export">
+        <property name="text">
+         <string>Taktische Zeichen erstellen</string>
+        </property>
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton { font-weight: bold; }</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="line_search">
+      <property name="placeholderText">
+       <string>Suche in Kategorien und Zeichen...</string>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTreeWidget" name="tree_zeichen">
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::ExtendedSelection</enum>
+      </property>
+      <property name="rootIsDecorated">
+       <bool>true</bool>
+      </property>
+      <property name="itemsExpandable">
+       <bool>true</bool>
+      </property>
+      <column>
+       <property name="text">
+        <string>Kategorien</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Kopien</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Modus</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Text OV/Ruf/Freitext</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Grafikposition</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Max. Höhe Grafik</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Max. Breite Grafik</string>
+       </property>
+      </column>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1400</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_datei">
+    <property name="title">
+     <string>Datei</string>
+    </property>
+    <addaction name="action_vorlagen_ordner_oeffnen"/>
+    <addaction name="action_ausgabe_ordner_oeffnen"/>
+    <addaction name="action_neu_laden"/>
+    <addaction name="separator"/>
+    <addaction name="action_einstellungen"/>
+    <addaction name="separator"/>
+    <addaction name="action_beenden"/>
+   </widget>
+   <widget class="QMenu" name="menu_hilfe">
+    <property name="title">
+     <string>Hilfe</string>
+    </property>
+    <addaction name="action_logs_oeffnen"/>
+    <addaction name="separator"/>
+    <addaction name="action_ueber"/>
+   </widget>
+   <addaction name="menu_datei"/>
+   <addaction name="menu_hilfe"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_vorlagen_ordner_oeffnen">
+   <property name="text">
+    <string>Vorlagen-Ordner öffnen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="action_ausgabe_ordner_oeffnen">
+   <property name="text">
+    <string>Ausgabe-Ordner öffnen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+O</string>
+   </property>
+  </action>
+  <action name="action_neu_laden">
+   <property name="text">
+    <string>Neu laden</string>
+   </property>
+   <property name="shortcut">
+    <string>F5</string>
+   </property>
+  </action>
+  <action name="action_einstellungen">
+   <property name="text">
+    <string>Einstellungen...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+,</string>
+   </property>
+  </action>
+  <action name="action_beenden">
+   <property name="text">
+    <string>Beenden</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="action_logs_oeffnen">
+   <property name="text">
+    <string>Log-Ordner öffnen</string>
+   </property>
+  </action>
+  <action name="action_ueber">
+   <property name="text">
+    <string>Über...</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

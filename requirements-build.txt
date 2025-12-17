@@ -1,0 +1,6 @@
+# Build Dependencies für Release-Erstellung
+# Werden nur während des Build-Prozesses benötigt, nicht zur Laufzeit
+
+# Markdown zu PDF Konvertierung
+markdown>=3.5
+weasyprint>=60.0
