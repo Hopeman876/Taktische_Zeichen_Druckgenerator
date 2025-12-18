@@ -1,12 +1,12 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Version](https://img.shields.io/badge/Version-0.8.5-green.svg)](releases/)
-[![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11-lightgrey.svg)](https://www.microsoft.com/windows)
+[![Platform](https://img.shields.io/badge/Platform-Windows%2011-lightgrey.svg)](https://www.microsoft.com/windows)
 
 # Taktische Zeichen Druckgenerator
 
 Generator für druckfertige taktische Zeichen mit individuellen Texten - ohne Grafikbearbeitungskenntnisse.
 
-![Screenshot Hauptfenster](resources/Logo.png)
+<img src="resources/Logo.png" alt="Logo Taktische Zeichen Druckgenerator" width="300">
 
 ## Das Problem, das wir lösen
 
@@ -34,6 +34,9 @@ Dieses Tool wurde entwickelt, um Einsatzkräften von **THW**, **Feuerwehr**, **R
 - 💾 **PNG** - Einzeldateien mit transparentem Hintergrund (RGBA)
 - 📄 **PDF Einzelzeichen** - Jedes Zeichen auf separater Seite
 - 📋 **PDF Schnittbogen** - Mehrere Zeichen auf A4 mit Schnittlinien
+  - **Ideal für den Einsatzfall:** Vorbereitete PDFs können auf Einsatz-PCs abgelegt werden
+  - Bei Bedarf einfach ausdrucken und zuschneiden - kein Druckgenerator mehr erforderlich
+  - Ermöglicht schnelle Nachproduktion taktischer Zeichen direkt vor Ort
 
 ### Technisch
 - 🚀 **Multithreading** - Schnellerer Export durch Parallelverarbeitung (1-32 Threads)
@@ -79,9 +82,9 @@ Taktische_Zeichen_Grafikvorlagen/
 ### 3. Zeichen konfigurieren
 
 1. **Checkbox aktivieren** vor den gewünschten Zeichen
-2. **Text-Modus wählen** (z.B. "OV + Stärke")
+2. **Text-Modus wählen** (z.B. "OV + Stärke", "Schreiblinie / Freitext")
 3. **Text eingeben** in der Tabelle
-4. **Kopien einstellen** falls mehrere identische Zeichen benötigt
+4. **Kopien einstellen**, falls mehrere identische Zeichen benötigt werden
 
 ### 4. Exportieren
 
@@ -95,12 +98,12 @@ Dateien liegen im Ausgabe-Ordner `Taktische_Zeichen_Ausgabe/`.
 ## Systemanforderungen
 
 **Empfohlen:**
-- Windows 10 oder 11 (64-bit)
+- Windows 11 (64-bit)
 - 4-8 GB RAM
 - Mehrkern-CPU (6+ Kerne für schnellen Export)
 
 **Minimum:**
-- Windows 10 (64-bit)
+- Windows 11 (64-bit)
 - 2 GB RAM
 - Dual-Core CPU
 
@@ -125,7 +128,7 @@ Dieses Programm steht unter der **GNU General Public License v3.0 (GPL v3)**.
 - ✅ Keine versteckten Kosten, keine Abos
 
 **Freundliche Bitte an kommerzielle Nutzer:**
-Falls du dieses Tool kommerziell nutzt und damit Einnahmen erzielst, würden wir uns über eine kurze Mitteilung freuen (keine rechtliche Verpflichtung). Kontakt: Ramon-Hoffmann@gmx.de
+Falls du dieses Tool kommerziell nutzt und damit Einnahmen erzielst, würden wir uns über eine kurze Mitteilung freuen (keine rechtliche Verpflichtung). Kontakt: ramon-hoffmann[at]gmx[dot]de
 
 ## Aktueller Stand
 
@@ -147,7 +150,7 @@ Diese Version bietet eine stabile Funktionsbasis mit vollständigem Feature-Set.
 - Log-Datei aus `Logs/` Ordner (bei Debug-Level)
 
 **Kontakt:**
-- E-Mail: Ramon-Hoffmann@gmx.de
+- E-Mail: ramon-hoffmann[at]gmx[dot]de
 - Betreff: "Taktische Zeichen Druckgenerator - Feedback"
 
 ## Verwandte Projekte
@@ -155,11 +158,6 @@ Diese Version bietet eine stabile Funktionsbasis mit vollständigem Feature-Set.
 Dieses Tool arbeitet hervorragend mit SVG-Sammlungen wie der [Taktische Zeichen Sammlung von Jonas Köritz](https://github.com/jonas-koeritz/Taktische-Zeichen) zusammen.
 
 Fehlt dein Projekt auf der Liste? Kontaktiere uns oder sende einen Pull-Request!
-
-## Schriftart
-
-Die empfohlene Schriftart ist **RobotoSlab-Bold**, lizenziert unter Apache 2.0 Lizenz.
-Mitgeliefert im `resources/` Ordner.
 
 ---
 
