@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # https://github.com/niess/python-appimage/releases
-PYTHON_IMAGE_VERSION=python3.13/python3.13.9-cp313-cp313t-manylinux_2_28_x86_64.AppImage
+BASE_PYTHON_IMAGE=https://github.com/niess/python-appimage/releases/download/python3.14/python3.14.0-cp314-cp314t-manylinux_2_28_x86_64.AppImage
 BASE_APP_IMAGE=https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
 
 set -e  # Exit on error
@@ -19,7 +19,7 @@ mkdir -p $TOOLS_TMP_DIR
 # AppImage Root base für Python herunterladen
 if [ ! -f "$TOOLS_TMP_DIR/$APPIMAGE_BASE" ]; then
     echo "Lade AppImage-Base herunter..."
-    wget https://github.com/niess/python-appimage/releases/download/$PYTHON_IMAGE_VERSION -O $TOOLS_TMP_DIR/$APPIMAGE_BASE
+    wget $BASE_PYTHON_IMAGE -O $TOOLS_TMP_DIR/$APPIMAGE_BASE
     chmod +x $TOOLS_TMP_DIR/$APPIMAGE_BASE
 fi
 
