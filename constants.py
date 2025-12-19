@@ -69,7 +69,10 @@ def setup_imagemagick_portable():
 # ImageMagick Setup beim Import ausfuehren und Ergebnis speichern
 # Das Setup MUSS beim Import erfolgen, damit ENV-Variablen gesetzt sind
 # Das Ergebnis wird fuer spaeteres Logging in main.py gespeichert
-IMAGEMAGICK_SETUP_RESULT = setup_imagemagick_portable()
+if sys.platform == 'win32':
+    IMAGEMAGICK_SETUP_RESULT = setup_imagemagick_portable()
+else:
+    IMAGEMAGICK_SETUP_RESULT = (True, "", "ImageMagick")
 
 # ================================================================================================
 # PROGRAMM-INFORMATIONEN
@@ -107,10 +110,13 @@ PROGRAM_DESCRIPTION = "Taktische Zeichen Druckgenerator -  Tool zur Druckvorbere
 
 def get_base_path() -> Path:
     """Ermittelt Basis-Pfad (funktioniert auch als .exe)"""
-    if getattr(sys, 'frozen', False):
-        return Path(sys.executable).parent
+    if sys.platform == 'win32':
+        if getattr(sys, 'frozen', False):
+            return Path(sys.executable).parent
+        else:
+            return Path(__file__).parent.resolve()
     else:
-        return Path(__file__).parent.resolve()
+        return Path.home()
 
 BASE_DIR = get_base_path()
 DEFAULT_ZEICHEN_DIR = BASE_DIR / "Taktische_Zeichen_Grafikvorlagen"
@@ -942,7 +948,8 @@ def create_directories():
         )
 
 # Bei Import ausfuehren
-create_directories()
+if sys.platform == 'win32':
+    create_directories()
 
 
 # ================================================================================================
