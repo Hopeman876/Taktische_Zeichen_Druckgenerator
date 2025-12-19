@@ -63,8 +63,7 @@ $BUILD_TMP_DIR/AppDir/packages/bin/uv run --python $BUILD_TMP_DIR/AppDir/usr/bin
 echo "Patche AppRun..."
 cd $BUILD_TMP_DIR/AppDir
 head --lines=-2 AppRun > AppRun1
-echo "export PYTHONPATH=\"\${APPDIR}/packages\"" >> AppRun1
-echo "\${APPDIR}/packages/bin/uv run \${APPDIR}/app/main.py" >> AppRun1
+echo "PYTHONPATH=\"\${APPDIR}/packages\" \${APPDIR}/packages/bin/uv run --python \${APPDIR}/usr/bin/python \${APPDIR}/app/main.py" >> AppRun1
 mv AppRun1 AppRun
 chmod +x AppRun
 
