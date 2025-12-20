@@ -2,7 +2,7 @@
 
 # https://github.com/niess/python-appimage/releases
 BASE_PYTHON_IMAGE=https://github.com/niess/python-appimage/releases/download/python3.14/python3.14.0-cp314-cp314t-manylinux_2_28_x86_64.AppImage
-BASE_APP_IMAGE=https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
+BASE_APP_IMAGE=https://github.com/probonopd/go-appimage/releases/download/continuous/appimagetool-940-x86_64.AppImage
 
 set -e  # Exit on error
 
@@ -82,10 +82,12 @@ Icon=logo
 Categories=Graphics;
 Terminal=false
 " > AppRun.desktop
+mv AppRun.desktop $BUILD_TMP_DIR/AppDir/usr/share/applications/AppRun.desktop
 
 echo "AppImage vorbereitet unter $BUILD_TMP_DIR/AppDir"
 
 # AppImage erzeugen
-echo "Baue AppImage..."
+echo "Bereite AppImage vor..."
 cd $SOURCE_DIR
-$TOOLS_TMP_DIR/$APPIMAGE_TOOL $BUILD_TMP_DIR/AppDir taktische_zeichen_generator-$VERSION.AppImage
+$TOOLS_TMP_DIR/$APPIMAGE_TOOL -s deploy $BUILD_TMP_DIR/AppDir/usr/share/applications/AppRun.desktop
+# taktische_zeichen_generator-$VERSION.AppImage
