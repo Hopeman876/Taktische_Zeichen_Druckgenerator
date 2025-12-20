@@ -21,7 +21,8 @@ jobs:
 
       - name: Prepare AppImage
         run: |
-          sudo apt install -y libfuse2
+          sudo apt update && sudo apt -y upgrade
+          sudo apt install -y libfuse2 qt6-base-dev
           ./build_appimage.sh
 
       - name: Determine version tag
