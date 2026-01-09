@@ -150,10 +150,6 @@ Diese Version bietet eine stabile Funktionsbasis mit vollständigem Feature-Set.
 - Screenshots (falls hilfreich)
 - Log-Datei aus `Logs/` Ordner (bei Debug-Level)
 
-**Kontakt:**
-- E-Mail: ramon-hoffmann[at]gmx[dot]de
-- Betreff: "Taktische Zeichen Druckgenerator - Feedback"
-
 ## Verwandte Projekte
 
 Dieses Tool arbeitet hervorragend mit SVG-Sammlungen wie der [Taktische Zeichen Sammlung von Jonas Köritz](https://github.com/jonas-koeritz/Taktische-Zeichen) zusammen.
