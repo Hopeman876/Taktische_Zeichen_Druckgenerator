@@ -22,7 +22,8 @@ jobs:
       - name: Prepare AppImage
         run: |
           sudo apt update && sudo apt -y upgrade
-          sudo apt install -y libfuse2 qt6-base-dev libpulse0
+          sudo apt install -y libfuse2 qt6-base-dev libpulse0 libegl1 libxkbcommon0 libxcb-cursor0
+          chmod +x ./build_appimage.sh
           ./build_appimage.sh
 
       - name: Determine version tag

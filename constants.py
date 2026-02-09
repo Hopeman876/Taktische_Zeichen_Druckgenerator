@@ -109,14 +109,13 @@ PROGRAM_DESCRIPTION = "Taktische Zeichen Druckgenerator -  Tool zur Druckvorbere
 # ================================================================================================
 
 def get_base_path() -> Path:
-    """Ermittelt Basis-Pfad (funktioniert auch als .exe)"""
-    if sys.platform == 'win32':
-        if getattr(sys, 'frozen', False):
-            return Path(sys.executable).parent
-        else:
-            return Path(__file__).parent.resolve()
+    """Ermittelt Basis-Pfad (funktioniert auch als .exe und AppImage)"""
+    if getattr(sys, 'frozen', False):
+        # PyInstaller .exe (Windows)
+        return Path(sys.executable).parent
     else:
-        return Path.home()
+        # Normaler Python-Start oder AppImage
+        return Path(__file__).parent.resolve()
 
 BASE_DIR = get_base_path()
 DEFAULT_ZEICHEN_DIR = BASE_DIR / "Taktische_Zeichen_Grafikvorlagen"
@@ -948,8 +947,7 @@ def create_directories():
         )
 
 # Bei Import ausfuehren
-if sys.platform == 'win32':
-    create_directories()
+create_directories()
 
 
 # ================================================================================================

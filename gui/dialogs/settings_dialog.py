@@ -528,8 +528,15 @@ class SettingsDialog(QDialog):
                 )
                 return
 
-            # Windows Explorer öffnen
-            os.startfile(str(LOGS_DIR))
+            # Dateimanager plattformuebergreifend oeffnen
+            import subprocess
+            import sys as _sys
+            if _sys.platform == 'win32':
+                os.startfile(str(LOGS_DIR))
+            elif _sys.platform == 'linux':
+                subprocess.run(['xdg-open', str(LOGS_DIR)])
+            else:
+                raise OSError(f"Nicht unterstuetztes Betriebssystem: {_sys.platform}")
             self.logger.info(f"Log-Verzeichnis geöffnet: {LOGS_DIR}")
 
         except Exception as e:
