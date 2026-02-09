@@ -1,16 +1,25 @@
 # -*- mode: python ; coding: utf-8 -*-
 
+import sys
+import os
+
 block_cipher = None
+
+is_windows = sys.platform == 'win32'
+
+# Plattformabhaengige Daten
+datas_list = [
+    ('gui/ui_files/*.ui', 'gui/ui_files'),  # UI-Dateien einbinden
+    ('resources', 'resources'),  # Logo und Icon einbinden
+]
+if is_windows and os.path.isdir('imagemagick'):
+    datas_list.append(('imagemagick', 'imagemagick'))  # ImageMagick portable (nur Windows)
 
 a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[
-        ('gui/ui_files/*.ui', 'gui/ui_files'),  # UI-Dateien einbinden
-        ('imagemagick', 'imagemagick'),  # ImageMagick portable einbinden
-        ('resources', 'resources'),  # Logo und Icon einbinden
-    ],
+    datas=datas_list,
     hiddenimports=[
         'PyQt6.QtCore',
         'PyQt6.QtGui',
@@ -105,16 +114,15 @@ a = Analysis(
         'pydoc_data',
         'unittest',        # Nicht verwendet
     ],
-    win_no_prefer_redirects=False,
-    win_private_assemblies=False,
     cipher=block_cipher,
     noarchive=False,
 )
 
 pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 
-# CHANGED: Große unnötige Dateien entfernen (spart weitere ~30-35 MB)
-a.binaries = [x for x in a.binaries if not x[0].startswith('opengl32sw')]  # 20 MB Software-OpenGL nicht benötigt
+# CHANGED: Grosse unnoetige Dateien entfernen (spart weitere ~30-35 MB)
+if is_windows:
+    a.binaries = [x for x in a.binaries if not x[0].startswith('opengl32sw')]  # 20 MB Software-OpenGL nicht benoetigt
 
 # Qt6 Translations komplett entfernen (~6 MB)
 a.datas = [x for x in a.datas if not x[0].startswith('PyQt6/Qt6/translations')]
@@ -136,15 +144,15 @@ exe = EXE(
     name='TaktischeZeichenDruckgenerator',
     debug=False,
     bootloader_ignore_signals=False,
-    strip=False,  # CHANGED: strip nicht verfügbar unter Windows ohne zusätzliche Tools
-    upx=False,  # CHANGED: UPX deaktiviert für bessere Performance
+    strip=not is_windows,  # strip auf Linux verwenden, auf Windows nicht verfuegbar
+    upx=False,  # UPX deaktiviert fuer bessere Performance
     console=False,  # Kein Console-Fenster
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon='resources/icon.ico',  # Icon fuer .exe-Datei
+    icon='resources/icon.ico' if is_windows else None,
 )
 
 coll = COLLECT(
@@ -152,8 +160,8 @@ coll = COLLECT(
     a.binaries,
     a.zipfiles,
     a.datas,
-    strip=False,  # CHANGED: strip nicht verfügbar unter Windows ohne zusätzliche Tools
-    upx=False,  # CHANGED: UPX deaktiviert für bessere Performance
+    strip=not is_windows,
+    upx=False,
     upx_exclude=[],
     name='TaktischeZeichenDruckgenerator',
 )
