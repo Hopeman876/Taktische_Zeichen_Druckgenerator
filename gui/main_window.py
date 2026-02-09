@@ -12,7 +12,6 @@ Features:
 - Vorschaubilder optional
 """
 
-import sys
 from pathlib import Path
 from typing import Optional, Dict
 from PyQt6.QtWidgets import (
@@ -67,14 +66,6 @@ class NoScrollWheelFilter(QObject):
 
         return False  # Event durchlassen
 
-def filemanager():
-    """Dateimanager je nach Plattform auswählen"""
-    if sys.platform == 'win32':
-        return "explorer"
-    elif sys.platform == 'linux':
-        return "xdg-open"
-    else:
-        raise ValueError("unsupported os")
 
 class MainWindow(QMainWindow):
     """
@@ -2134,8 +2125,8 @@ class MainWindow(QMainWindow):
             self._update_statusbar("Ordner-Auswahl abgebrochen")
 
     def _on_ausgabe_ordner_oeffnen(self):
-        """Oeffnet Ausgabe-Ordner im Dateimanager"""
-        # NEW: Ausgabe-Ordner im Dateimanager öffnen
+        """Oeffnet Ausgabe-Ordner im Windows Explorer"""
+        # NEW: Ausgabe-Ordner im Windows Explorer öffnen
         import subprocess
         from constants import EXPORT_DIR
 
@@ -2163,8 +2154,8 @@ class MainWindow(QMainWindow):
                 return
 
         try:
-            # Dateimanager öffnen
-            subprocess.run([filemanager(), str(EXPORT_DIR)])
+            # Windows Explorer öffnen
+            subprocess.run(['explorer', str(EXPORT_DIR)])
             self.logger.info(f"Ausgabe-Ordner geöffnet: {EXPORT_DIR}")
         except Exception as e:
             self.logger.error(f"Fehler beim Öffnen des Ausgabe-Ordners: {e}")
@@ -3012,7 +3003,7 @@ class MainWindow(QMainWindow):
         self._update_children_widgets(parent_item)
 
     def _on_vorlagen_ordner_explorer_oeffnen(self):
-        """Öffnet Vorlagen-Ordner im Dateimanager"""
+        """Öffnet Vorlagen-Ordner im Windows Explorer"""
         import subprocess
         from pathlib import Path
 
@@ -3042,8 +3033,8 @@ class MainWindow(QMainWindow):
                 return
 
         try:
-            # Dateimanager öffnen
-            subprocess.run([filemanager(), str(vorlagen_ordner)])
+            # Windows Explorer öffnen
+            subprocess.run(['explorer', str(vorlagen_ordner)])
             self.logger.info(f"Vorlagen-Ordner geöffnet: {vorlagen_ordner}")
         except Exception as e:
             self.logger.error(f"Fehler beim Öffnen des Vorlagen-Ordners: {e}")
@@ -3215,8 +3206,8 @@ class MainWindow(QMainWindow):
         self.logger.warning("Benutzerhandbuch nicht gefunden")
 
     def _on_logs_oeffnen(self):
-        """Oeffnet Log-Ordner im Dateimanager"""
-        # NEW: Log-Ordner im Dateimanager öffnen
+        """Oeffnet Log-Ordner im Windows Explorer"""
+        # NEW: Log-Ordner im Windows Explorer öffnen
         import subprocess
         from constants import LOGS_DIR
 
@@ -3229,8 +3220,8 @@ class MainWindow(QMainWindow):
             return
 
         try:
-            # Dateimanager öffnen
-            subprocess.run([filemanager(), str(LOGS_DIR)])
+            # Windows Explorer öffnen
+            subprocess.run(['explorer', str(LOGS_DIR)])
             self.logger.info(f"Log-Ordner geöffnet: {LOGS_DIR}")
         except Exception as e:
             self.logger.error(f"Fehler beim Öffnen des Log-Ordners: {e}")
