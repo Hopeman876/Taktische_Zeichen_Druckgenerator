@@ -1,0 +1,16 @@
+[package]
+name = "tz-cli"
+description = "Kommandozeile fuer den Taktische Zeichen Druckgenerator (Tests, Automatisierung)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+
+[[bin]]
+name = "tzdg"
+path = "src/main.rs"
+
+[dependencies]
+tz-core.workspace = true
+serde_json.workspace = true
+serde.workspace = true
