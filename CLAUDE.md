@@ -19,8 +19,8 @@ app/src/          UI (Svelte 5 runes): lib/store.svelte.ts (state), lib/api.ts, 
 app/src-tauri/    Thin Tauri command layer over tz-core (settings, dialogs, threads, progress)
 docs/             ARCHITEKTUR.md (architecture, layout rules), ROADMAP.md (open items), bilder/ (README images)
 README.md         user-facing project page (German, with screenshots) - keep technical details in ENTWICKLUNG.md
-ENTWICKLUNG.md    developer docs: build, CLI, release via tag, licenses, portable files
-.github/workflows/build.yml   tests, clippy, frontend check, Windows build, release on tag v*
+ENTWICKLUNG.md    developer docs: build, CLI, release via "Run workflow", licenses, portable files
+.github/workflows/build.yml   tests, clippy, frontend check; Windows build + release only via workflow_dispatch (input version)
 ```
 
 **Read `docs/ARCHITEKTUR.md` before changing layout or export code.**

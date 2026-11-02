@@ -83,21 +83,29 @@ Beispiel `auftrag.json`:
 
 Der Workflow `.github/workflows/build.yml` prüft bei jedem Push und Pull Request (Tests, Clippy,
 Oberfläche; bei PRs aus diesem Repository nicht doppelt). Der Windows-Build (Installer + portable
-EXE) läuft nur bei einem Release-Tag oder manuell über „Run workflow“ in GitHub Actions; die
-Ergebnisse liegen dann als Artefakte am Workflow-Lauf.
+EXE) läuft nur manuell über **Actions → „Test, Build und Release“ → „Run workflow“**.
 
-**Release:** Nur einen Tag setzen und pushen, z.B.
+**Nur bauen:** Feld „version“ leer lassen. ZIP-Inhalt und Installer liegen danach als Artefakte am
+Workflow-Lauf.
 
-```bash
-git tag v2.0.0-pre-release
-git push origin v2.0.0-pre-release
-```
+**Release:** Branch (normalerweise `main`) wählen, im Feld „version“ die Version ohne `v` eintragen,
+z.B. `2.0.0-pre-release` oder `2.0.0`, und starten. Der Workflow
 
-Der Workflow übernimmt die Version aus dem Tag automatisch in `Cargo.toml`, `app/package.json` und
-`app/src-tauri/tauri.conf.json` (die Werte im Repository bleiben unverändert) und erstellt ein
-GitHub-Release mit Installer und portabler ZIP. Tags mit Bindestrich (`v2.0.0-pre-release`,
-`v2.0.0-rc.1`) werden als **Vorabversion** veröffentlicht, Tags ohne (`v2.0.0`) als reguläres
-„Latest“-Release. Der Tag muss eine gültige SemVer-Version sein (`vX.Y.Z` oder `vX.Y.Z-zusatz`).
+1. prüft die Version (gültige SemVer: `X.Y.Z` oder `X.Y.Z-zusatz`) und dass der Tag `vX.Y.Z` noch
+   nicht existiert,
+2. übernimmt sie in `Cargo.toml`, `app/package.json` und `app/src-tauri/tauri.conf.json` (die Werte
+   im Repository bleiben unverändert),
+3. baut, legt das Release als Entwurf mit ZIP und Installer an und veröffentlicht es erst danach.
+   Dabei entsteht der Tag auf dem gebauten Commit.
+
+Versionen mit Bindestrich (`2.0.0-pre-release`, `2.0.0-rc.1`) werden als **Vorabversion**
+veröffentlicht, Versionen ohne (`2.0.0`) als „Latest“-Release. Die Beschreibung wird aus den
+Commits erzeugt und kann auf der Website jederzeit bearbeitet werden. Wer sie vor dem
+Veröffentlichen schreiben möchte, setzt beim Start den Haken „entwurf“ und veröffentlicht den
+Entwurf anschließend selbst unter „Releases“.
+
+> **Wichtig:** Kein Release vorab auf der Website anlegen. GitHub-Releases sind nach dem
+> Veröffentlichen unveränderlich; danach lassen sich keine Dateien mehr anhängen.
 
 ## Lizenzen der Komponenten
 

@@ -12,7 +12,7 @@ Stand: erster Meilenstein (Kern, Export, App-Grundgerüst).
 - [x] CLI `tzdg` (Export per JSON-Auftrag, Vorschau, Katalog)
 - [x] Desktop-App: Kategorien, Vorlagen mit Miniaturen, Auftrag, Live-Vorschau, Einstellungen,
       Export mit Fortschritt/Abbruch, Sessions
-- [x] GitHub Actions: Tests, Clippy, Frontend-Check, Windows-Installer + portable EXE, Release bei Tag
+- [x] GitHub Actions: Tests, Clippy, Frontend-Check, Windows-Installer + portable EXE, Release per „Run workflow“
 - [x] Bedienkonzept: Katalog -> Vorschau -> Hinzufügen; Auftrag nach Kategorien gruppiert mit
       Checkboxen und Mehrfachauswahl; „Änderung speichern“ mit Rückfrage bei ungespeicherten Änderungen
 - [x] Einstellungen und Logs neben der EXE (Fallback `%APPDATA%`), Log-Datei mit 30 Tagen Aufbewahrung
@@ -28,9 +28,9 @@ Stand: erster Meilenstein (Kern, Export, App-Grundgerüst).
 - [x] Mindestschrift 8 pt, optionale 3. Textzeile pro Zeichen (nur ohne Kollision mit der Grafik)
 - [x] Splash-Screen (bis App bereit, mind. 2,5 s), ?-Menü mit Einführungstour und „Über“
 - [x] Edge-Kontextmenü abgeschaltet, Warnung bei leerem Vorlagenordner
-- [x] Release per Tag: Version aus dem Tag, Vorabversion bei Tags mit Bindestrich
+- [x] Release per „Run workflow“ mit Versionseingabe: Tag und Release entstehen im Workflow (Entwurf → Dateien → veröffentlichen), Vorabversion bei Bindestrich
 - [x] Knopf „Ausgabeordner“, Schriftgröße wächst mit der Zeichenhöhe (abschaltbar), max. 1000 mm,
-      PNG-Hintergrund weiß/transparent, vollständige Lizenztexte im Paket, Windows-Build nur bei Tag/manuell
+      PNG-Hintergrund weiß/transparent, vollständige Lizenztexte im Paket, Windows-Build nur manuell
 - [x] Alte Python-Version entfernt (liegt in der Git-Historie, letzter Stand: Commit `5499f7a`)
 
 ## Als Nächstes (für Funktionsgleichheit mit v0.8.x)

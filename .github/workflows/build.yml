@@ -1,18 +1,30 @@
 name: Test, Build und Release
 
 # Push/PR: nur schnelle Pruefungen (Tests, Clippy, Oberflaeche).
-# Windows-Build: nur bei Tag "v*" (dann zusaetzlich GitHub-Release) oder manuell
-# ("Run workflow" in GitHub Actions; Ergebnis als Artefakt am Lauf).
+# Windows-Build und Release: nur manuell ueber Actions -> "Run workflow".
+#   - Feld "version" leer: nur bauen, Ergebnis als Artefakt am Lauf.
+#   - Feld "version" z.B. 2.0.0 oder 2.0.0-pre-release: bauen, Tag v<version> auf dem gewaehlten
+#     Branch anlegen, Release als Entwurf erstellen, ZIP und Installer anhaengen, danach
+#     veroeffentlichen (GitHub-Releases sind nach dem Veroeffentlichen unveraenderlich).
 on:
   push:
     branches: ["**"]
-    tags: ["v*"]
   pull_request:
   workflow_dispatch:
+    inputs:
+      version:
+        description: "Version fuer das Release (z.B. 2.0.0 oder 2.0.0-pre-release). Leer = nur bauen."
+        required: false
+        default: ""
+      entwurf:
+        description: "Release als Entwurf lassen (Beschreibung auf der Website ergaenzen und selbst veroeffentlichen)"
+        type: boolean
+        default: false
 
 concurrency:
-  group: build-${{ github.ref }}
-  cancel-in-progress: true
+  # Release-Laeufe nicht durch einen spaeteren Push abbrechen
+  group: build-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name != 'workflow_dispatch' }}
 
 jobs:
   test:
@@ -56,15 +68,28 @@ jobs:
   windows:
     name: Windows-Build (Installer + portable EXE)
     needs: [test, frontend]
-    if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'workflow_dispatch'
     runs-on: windows-latest
     permissions:
       contents: write
+    env:
+      VERSION: ${{ inputs.version }}
+      GH_TOKEN: ${{ github.token }}
     defaults:
       run:
         working-directory: app
     steps:
       - uses: actions/checkout@v4
+      - name: Version pruefen (nur bei Release)
+        if: inputs.version != ''
+        shell: pwsh
+        working-directory: .
+        run: |
+          # Muss eine gueltige SemVer-Version sein, der Tag darf noch nicht existieren
+          if ($env:VERSION -notmatch '^\d+\.\d+\.\d+(-[0-9A-Za-z.-]+)?$') { throw "'$($env:VERSION)' ist keine gueltige Version (z.B. 2.0.0 oder 2.0.0-pre-release, ohne 'v')" }
+          git ls-remote --exit-code --tags origin "refs/tags/v$($env:VERSION)" | Out-Null
+          if ($LASTEXITCODE -eq 0) { throw "Tag v$($env:VERSION) existiert bereits. Bitte eine neue Version waehlen." }
+          $global:LASTEXITCODE = 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -73,17 +98,14 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
       - run: npm ci
-      - name: Version aus dem Tag uebernehmen (nur bei Tag)
-        if: startsWith(github.ref, 'refs/tags/v')
+      - name: Version uebernehmen (nur bei Release)
+        if: inputs.version != ''
         shell: pwsh
         working-directory: .
         run: |
-          # v2.0.0-pre-release -> 2.0.0-pre-release (muss eine gueltige SemVer-Version sein)
-          $v = "${{ github.ref_name }}".Substring(1)
-          if ($v -notmatch '^\d+\.\d+\.\d+(-[0-9A-Za-z.-]+)?$') { throw "Tag '$v' ist keine gueltige Version (z.B. v2.0.0 oder v2.0.0-pre-release)" }
-          (Get-Content Cargo.toml) -replace '^version = ".*"$', "version = `"$v`"" | Set-Content Cargo.toml
-          node -e "for (const f of ['app/package.json','app/src-tauri/tauri.conf.json']) { const fs=require('fs'); const j=JSON.parse(fs.readFileSync(f,'utf8')); j.version=process.argv[1]; fs.writeFileSync(f, JSON.stringify(j,null,2)+'\n'); }" $v
-          Write-Host "Version gesetzt: $v"
+          (Get-Content Cargo.toml) -replace '^version = ".*"$', "version = `"$($env:VERSION)`"" | Set-Content Cargo.toml
+          node -e "for (const f of ['app/package.json','app/src-tauri/tauri.conf.json']) { const fs=require('fs'); const j=JSON.parse(fs.readFileSync(f,'utf8')); j.version=process.argv[1]; fs.writeFileSync(f, JSON.stringify(j,null,2)+'\n'); }" $env:VERSION
+          Write-Host "Version gesetzt: $($env:VERSION)"
       - name: Tauri-Build
         run: npx tauri build
       - name: Portable-Paket zusammenstellen
@@ -105,17 +127,24 @@ jobs:
         with:
           name: TaktischeZeichenDruckgenerator-installer
           path: target/release/bundle/nsis/*.exe
-      - name: GitHub-Release (nur bei Tag)
-        if: startsWith(github.ref, 'refs/tags/v')
-        uses: ncipollo/release-action@v1
-        with:
-          tag: ${{ github.ref_name }}
-          name: "Release ${{ github.ref_name }}"
-          # Tags mit Bindestrich (z.B. v2.0.0-pre-release) werden als Vorabversion veroeffentlicht
-          prerelease: ${{ contains(github.ref_name, '-') }}
-          makeLatest: ${{ !contains(github.ref_name, '-') }}
-          artifacts: "app/portable/TaktischeZeichenDruckgenerator_portable.zip,target/release/bundle/nsis/*.exe"
-          allowUpdates: true
-          # Wurde das Release auf der GitHub-Website angelegt: Titel und Beschreibung dort beibehalten
-          omitNameDuringUpdate: true
-          omitBodyDuringUpdate: true
+      - name: GitHub-Release erstellen (nur bei Release)
+        if: inputs.version != ''
+        shell: pwsh
+        working-directory: .
+        run: |
+          $tag = "v$($env:VERSION)"
+          $dateien = @("app/portable/TaktischeZeichenDruckgenerator_portable.zip") + (Get-ChildItem target/release/bundle/nsis/*.exe).FullName
+          $optionen = @("--draft", "--target", "${{ github.sha }}", "--title", "Release $tag", "--generate-notes")
+          # Versionen mit Bindestrich (z.B. 2.0.0-pre-release) sind Vorabversionen
+          if ($env:VERSION.Contains("-")) { $optionen += "--prerelease" } else { $optionen += "--latest" }
+          # Erst als Entwurf mit allen Dateien anlegen ...
+          gh release create $tag @dateien @optionen
+          if ($LASTEXITCODE -ne 0) { throw "Release $tag konnte nicht erstellt werden" }
+          # ... dann veroeffentlichen (dabei entsteht der Tag); als Entwurf belassen, wenn gewuenscht
+          if ("${{ inputs.entwurf }}" -ne "true") {
+            gh release edit $tag --draft=false
+            if ($LASTEXITCODE -ne 0) { throw "Release $tag konnte nicht veroeffentlicht werden" }
+          }
+          $anzahl = (gh release view $tag --json assets --jq ".assets | length")
+          if ([int]$anzahl -lt $dateien.Count) { throw "Release $tag hat nur $anzahl von $($dateien.Count) Dateien" }
+          Write-Host "Release $tag mit $anzahl Dateien erstellt"
