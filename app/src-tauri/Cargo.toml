@@ -1,0 +1,25 @@
+[package]
+name = "tz-app"
+description = "Taktische Zeichen Druckgenerator (Desktop-App)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+
+[lib]
+name = "tz_app_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tz-core.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+base64.workspace = true
+log.workspace = true
+chrono.workspace = true
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+tauri-plugin-opener = "2"
