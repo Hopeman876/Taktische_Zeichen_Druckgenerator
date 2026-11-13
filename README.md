@@ -166,7 +166,6 @@ Lizenzen der verwendeten Komponenten liegen dem Programm bei
 ([Übersicht](THIRD-PARTY-LICENSES.md)).
 
 Fehler und Wünsche bitte als [Issue](../../issues)
-melden. Falls du das Programm kommerziell einsetzt, freuen wir uns über eine kurze Mitteilung
-(keine Pflicht): Ramon-Hoffmann@gmx.de
+melden. Falls du das Programm kommerziell einsetzt, freuen wir uns über eine kurze Mitteilung.
 
 Informationen für Entwickler: **[ENTWICKLUNG.md](ENTWICKLUNG.md)**
